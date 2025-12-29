@@ -12,4 +12,4 @@ INSTRUCTION=$(mimi instruction)
 
 # Output JSON format required by Gemini CLI SessionStart hook
 jq -n --arg inst "$INSTRUCTION" \
-  '{hook_specific_output: {hook_event_name: "SessionStart", additional_context: $inst}, system_message: "🧠 mimi-memory protocol loaded"}'
+  '{hookSpecificOutput: {hookEventName: "SessionStart", additionalContext: $inst}, systemMessage: "🧠 mimi-memory protocol loaded"}'
