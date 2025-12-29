@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Path to the mimi CLI
+PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+export PATH="$PROJECT_ROOT/bin:$PATH"
+
+# Logging for debug
+echo "$(date): session_start.sh called" >> "$PROJECT_ROOT/hook.log"
+
+# Get the instruction text
+INSTRUCTION=$(mimi instruction)
+
+# Output JSON format required by Gemini CLI SessionStart hook
+jq -n --arg inst "$INSTRUCTION" \
+  '{hook_specific_output: {hook_event_name: "SessionStart", additional_context: $inst}, system_message: "🧠 mimi-memory protocol loaded"}'
