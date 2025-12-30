@@ -121,7 +121,8 @@ export class Repository {
     const table = await db.openTable(MEMORY_TABLE);
 
     const formattedUpdates: any = {};
-    if (updates.content !== undefined) formattedUpdates.content = updates.content;
+    if (updates.content !== undefined)
+      formattedUpdates.content = updates.content;
     if (updates.type !== undefined) formattedUpdates.type = updates.type;
     if (updates.metadata !== undefined) {
       formattedUpdates.metadata = JSON.stringify(updates.metadata);
