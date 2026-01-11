@@ -10,14 +10,16 @@ vi.mock("fs-extra", () => ({
 }));
 
 vi.mock("@lancedb/lancedb", () => ({
-  connect: vi.fn().mockResolvedValue({ tableNames: vi.fn().mockResolvedValue([]) }),
+  connect: vi
+    .fn()
+    .mockResolvedValue({ tableNames: vi.fn().mockResolvedValue([]) }),
 }));
 
 describe("db utility", () => {
   beforeEach(() => {
     vi.clearAllMocks();
     // Reset internal state if possible, or just be aware of it
-    setDataDir(""); 
+    setDataDir("");
   });
 
   it("should throw error if data dir is not set", async () => {

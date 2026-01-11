@@ -152,9 +152,10 @@ export class Repository {
     if (updates.metadata !== undefined) {
       formattedUpdates.metadata = `'${JSON.stringify(updates.metadata).replace(/'/g, "''")}'`;
     }
-          if (updates.entityIds !== undefined) {
-          formattedUpdates.entityIds = `'${JSON.stringify(updates.entityIds).replace(/'/g, "''")}'`;
-        }
-    
-        await table.update(formattedUpdates, { where: `id = '${id}'` });
-      }}
+    if (updates.entityIds !== undefined) {
+      formattedUpdates.entityIds = `'${JSON.stringify(updates.entityIds).replace(/'/g, "''")}'`;
+    }
+
+    await table.update(formattedUpdates, { where: `id = '${id}'` });
+  }
+}

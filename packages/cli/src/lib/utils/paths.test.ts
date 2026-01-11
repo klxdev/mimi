@@ -1,5 +1,11 @@
 import { describe, it, expect } from "vitest";
-import { getMimiDir, getConfigPath, getDataDir, getLogsDir, findProjectConfig } from "./paths";
+import {
+  getMimiDir,
+  getConfigPath,
+  getDataDir,
+  getLogsDir,
+  findProjectConfig,
+} from "./paths";
 import path from "path";
 import os from "os";
 
@@ -9,7 +15,9 @@ describe("paths utility", () => {
   });
 
   it("should return correct config path", () => {
-    expect(getConfigPath()).toBe(path.join(os.homedir(), ".mimi", "settings.json"));
+    expect(getConfigPath()).toBe(
+      path.join(os.homedir(), ".mimi", "settings.json"),
+    );
   });
 
   it("should return correct data dir", () => {

@@ -41,8 +41,14 @@ describe("CLI Logger", () => {
     logger.warn("warn log");
 
     expect(logSpy).toHaveBeenCalledWith("debug log");
-    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("INFO:"), "info log");
-    expect(warnSpy).toHaveBeenCalledWith(expect.stringContaining("WARN:"), "warn log");
+    expect(logSpy).toHaveBeenCalledWith(
+      expect.stringContaining("INFO:"),
+      "info log",
+    );
+    expect(warnSpy).toHaveBeenCalledWith(
+      expect.stringContaining("WARN:"),
+      "warn log",
+    );
   });
 
   it("should return a mocked spinner when debug is false", () => {

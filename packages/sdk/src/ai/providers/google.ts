@@ -18,7 +18,7 @@ export class GoogleProvider implements ILLMProvider {
   private async withRetry<T>(
     operation: () => Promise<T>,
     retries: number = 10,
-    delay: number = 1000
+    delay: number = 1000,
   ): Promise<T> {
     try {
       return await operation();
@@ -27,7 +27,7 @@ export class GoogleProvider implements ILLMProvider {
         error.status === 429 ||
         error.status === 503 ||
         error?.message?.includes("timeout");
-      
+
       if (retries > 0 && isRetryable) {
         await new Promise((resolve) => setTimeout(resolve, delay));
         return this.withRetry(operation, retries - 1, delay * 2);

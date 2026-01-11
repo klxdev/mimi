@@ -4,8 +4,20 @@ import { SearchEngine } from "./engine";
 vi.mock("../storage/repository", () => ({
   Repository: vi.fn().mockImplementation(() => ({
     searchMemories: vi.fn().mockResolvedValue([
-      { id: "1", content: "match 1", type: "raw", metadata: '{"project": "p1"}', _distance: 0.1 },
-      { id: "2", content: "match 2", type: "raw", metadata: '{"project": "p2"}', _distance: 0.2 },
+      {
+        id: "1",
+        content: "match 1",
+        type: "raw",
+        metadata: '{"project": "p1"}',
+        _distance: 0.1,
+      },
+      {
+        id: "2",
+        content: "match 2",
+        type: "raw",
+        metadata: '{"project": "p2"}',
+        _distance: 0.2,
+      },
     ]),
   })),
 }));
@@ -34,7 +46,7 @@ describe("SearchEngine", () => {
     const engine = new SearchEngine(config);
     const results = await engine.search("query", { project: "p1" });
 
-    expect(results.every(r => r.metadata.project === "p1")).toBe(true);
+    expect(results.every((r) => r.metadata.project === "p1")).toBe(true);
     expect(results.length).toBe(1);
   });
 });

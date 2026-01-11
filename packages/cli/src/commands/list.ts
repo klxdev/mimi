@@ -15,9 +15,7 @@ export const listAction = async (options: any) => {
       const output = memories.map((m: any) => ({
         ...m,
         metadata:
-          typeof m.metadata === "string"
-            ? JSON.parse(m.metadata)
-            : m.metadata,
+          typeof m.metadata === "string" ? JSON.parse(m.metadata) : m.metadata,
       }));
       logger.success(JSON.stringify(output, null, 2));
     } else {

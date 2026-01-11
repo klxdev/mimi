@@ -20,7 +20,10 @@ describe("initAction", () => {
 
   it("should create mimi.toml if it doesn't exist", async () => {
     await initAction({});
-    expect(fs.writeFile).toHaveBeenCalledWith(expect.stringContaining("mimi.toml"), expect.stringContaining('project = "test-repo"'));
+    expect(fs.writeFile).toHaveBeenCalledWith(
+      expect.stringContaining("mimi.toml"),
+      expect.stringContaining('project = "test-repo"'),
+    );
   });
 
   it("should fail if mimi.toml already exists", async () => {

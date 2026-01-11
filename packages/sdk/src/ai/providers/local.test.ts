@@ -17,7 +17,9 @@ describe("LocalProvider", () => {
 
   it("should generate a JSON response for entity extraction prompts", async () => {
     const provider = new LocalProvider();
-    const response = await provider.generate({ prompt: "Identify the key entities" });
+    const response = await provider.generate({
+      prompt: "Identify the key entities",
+    });
     expect(response.text).toContain("LocalEntity");
   });
 

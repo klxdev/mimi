@@ -81,6 +81,6 @@ describe("sdkLogger", () => {
   it("should set log directory", () => {
     sdkLogger.setLogDir("/tmp/logs");
     // Currently setLogDir doesn't do much in the code, but we test the setter
-    expect(true).toBe(true); 
+    expect(true).toBe(true);
   });
 });

@@ -39,16 +39,18 @@ describe("getAction", () => {
 
   it("should handle memory not found", async () => {
     repoInstance.getById.mockResolvedValue(null);
-    const exitSpy = vi.spyOn(process, "exit").mockImplementation((code?: string | number | null | undefined) => { 
-      throw new Error("exit " + code); 
-    });
-    
+    const exitSpy = vi
+      .spyOn(process, "exit")
+      .mockImplementation((code?: string | number | null | undefined) => {
+        throw new Error("exit " + code);
+      });
+
     try {
       await getAction("not-exists", {});
     } catch (e: any) {
       expect(e.message).toBe("exit 1");
     }
-    
+
     expect(exitSpy).toHaveBeenCalledWith(1);
     exitSpy.mockRestore();
   });

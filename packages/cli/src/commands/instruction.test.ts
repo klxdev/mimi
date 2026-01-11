@@ -6,6 +6,8 @@ describe("instructionAction", () => {
   it("should output instructions via logger.success", () => {
     const successSpy = vi.spyOn(logger, "success").mockImplementation(() => {});
     instructionAction();
-    expect(successSpy).toHaveBeenCalledWith(expect.stringContaining("Required Agent Memory Protocol"));
+    expect(successSpy).toHaveBeenCalledWith(
+      expect.stringContaining("Required Agent Memory Protocol"),
+    );
   });
 });
